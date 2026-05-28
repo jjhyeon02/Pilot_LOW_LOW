@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>사회적 상황에 대한 반응 사전 조사</title>
+  <title>사회적 상황에 대한 반응 사전 조사D</title>
 
   <style>
     body {
@@ -16,7 +16,7 @@
       color: #222;
       background: #fff;
     }
- 
+
     .page {
       display: none;
     }
@@ -224,18 +224,10 @@
 
 <body>
 
-  <!-- Netlify Forms 감지용 숨김 폼 -->
-  <form name="pre-survey-log" method="POST" data-netlify="true" netlify-honeypot="bot-field" style="display:none;">
-    <input type="hidden" name="form-name" value="pre-survey-log">
-    <input type="text" name="participant_password">
-    <input type="text" name="consent">
-    <input type="text" name="video_completed">
-    <input type="text" name="submitted_at">
-  </form>
 
   <!-- 1페이지: 연구 안내 -->
   <section class="page active" id="page1">
-    <div class="title-box">사회적 상황에 대한 반응 사전 조사</div>
+    <div class="title-box">사회적 상황에 대한 반응 사전 조사D</div>
 
     <p>안녕하십니까? 연구에 참여해 주셔서 감사합니다.</p>
 
@@ -306,51 +298,11 @@
 
     <div class="button-row">
       <button type="button" id="backToPage1">이전</button>
-      <button type="button" id="toPage3" disabled>다음</button>
-    </div>
-  </section>
-
-  <!-- 3페이지: 참가자 식별 정보 -->
-  <section class="page" id="page3">
-    <h2>참가자 식별 정보 입력</h2>
-
-
-    <p>
-      본인 학번의 뒤 네 자리 숫자를 입력해 주십시오.
-    </p>
-
-    <p>
-      예: 학번이 2023123456인 경우, <strong>3456</strong>
-    </p>
-
-    <p>
-      입력하신 번호는 응답자를 구별하기 위한 목적으로만 사용되며,
-      이외의 목적으로는 사용하지 않습니다.
-    </p>
-
-    <div class="input-box">
-      <label for="participantPassword">학번 뒤 네자리 숫자</label>
-      <input
-        type="text"
-        id="participantPassword"
-        maxlength="4"
-        inputmode="numeric"
-        placeholder="예: 4829"
-        autocomplete="off"
-      >
-
-      <p class="warning" id="passwordWarning">
-        숫자 4자리를 입력해야 다음 단계로 이동할 수 있습니다.
-      </p>
-    </div>
-
-    <div class="button-row">
-      <button type="button" id="backToPage2">이전</button>
       <button type="button" id="toPage4" disabled>다음</button>
     </div>
   </section>
 
-  <!-- 4페이지: 영상 시청 -->
+  <!-- 3페이지: 영상 시청 -->
   <section class="page" id="page4">
     <h2>다음 영상을 시청해 주십시오</h2>
 
@@ -392,7 +344,7 @@
       아래 주소를 실제 Google Form 응답자용 링크로 바꾸세요.
       예: https://forms.gle/xxxxxxxxxxxx
     */
-    const googleFormUrl = "https://docs.google.com/forms/d/e/1FAIpQLSdld_cA8_8L10bF12IxW4OoUKtsBvd1JdjegNk_PTmOfxMdtA/viewform?usp=publish-editor";
+    const googleFormUrl = "https://tally.so/r/LZk1ll";
 
     /*
       테스트용 설정입니다.
@@ -404,7 +356,6 @@
     const pages = {
       page1: document.getElementById("page1"),
       page2: document.getElementById("page2"),
-      page3: document.getElementById("page3"),
       page4: document.getElementById("page4")
     };
 
@@ -422,51 +373,22 @@
       showPage("page1");
     });
 
-    document.getElementById("backToPage2").addEventListener("click", () => {
-      showPage("page2");
-    });
-
     const consentCheck = document.getElementById("consentCheck");
-    const toPage3 = document.getElementById("toPage3");
+    const toPage4 = document.getElementById("toPage4");
     const consentWarning = document.getElementById("consentWarning");
 
     consentCheck.addEventListener("change", () => {
       if (consentCheck.checked) {
-        toPage3.disabled = false;
+        toPage4.disabled = false;
         consentWarning.style.display = "none";
       } else {
-        toPage3.disabled = true;
+        toPage4.disabled = true;
         consentWarning.style.display = "block";
       }
     });
 
-    toPage3.addEventListener("click", () => {
-      if (consentCheck.checked) {
-        showPage("page3");
-      }
-    });
-
-    const participantPasswordInput = document.getElementById("participantPassword");
-    const toPage4 = document.getElementById("toPage4");
-    const passwordWarning = document.getElementById("passwordWarning");
-
-    function validateParticipantPassword() {
-      const password = participantPasswordInput.value.trim();
-      const valid = /^[0-9]{4}$/.test(password);
-
-      toPage4.disabled = !valid;
-      passwordWarning.style.display = valid ? "none" : "block";
-    }
-
-    participantPasswordInput.addEventListener("input", () => {
-      participantPasswordInput.value = participantPasswordInput.value.replace(/[^0-9]/g, "");
-      validateParticipantPassword();
-    });
-
     toPage4.addEventListener("click", () => {
-      validateParticipantPassword();
-
-      if (!toPage4.disabled) {
+      if (consentCheck.checked) {
         showPage("page4");
 
         if (testMode) {
@@ -562,50 +484,12 @@
       enableSubmitButton();
     });
 
-    function encode(data) {
-      return Object.keys(data)
-        .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
-        .join("&");
-    }
-
-    async function submitToNetlify() {
-      const participantPassword = participantPasswordInput.value.trim();
-
-      const formData = {
-        "form-name": "pre-survey-log",
-        participant_password: participantPassword,
-        consent: consentCheck.checked ? "동의함" : "동의하지 않음",
-        video_completed: testMode ? "테스트모드" : (videoCompleted ? "완료" : "미완료"),
-        submitted_at: new Date().toISOString()
-      };
-
-      await fetch("/", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: encode(formData)
-      });
-    }
-
-submitButton.addEventListener("click", async () => {
-  if (!videoCompleted && !testMode) return;
-
-  submitButton.disabled = true;
-  submitButton.textContent = "기록 저장 중입니다...";
-
-  try {
-    await submitToNetlify();
-    window.location.href = googleFormUrl;
-  } catch (error) {
-    alert("기록 저장 중 문제가 발생했습니다. 인터넷 연결을 확인한 뒤 다시 시도해 주세요.");
-    submitButton.disabled = false;
-    submitButton.textContent = "다음 설문으로 이동";
-  }
-});
+    submitButton.addEventListener("click", () => {
+      if (!videoCompleted && !testMode) return;
+      window.location.href = googleFormUrl;
+    });
 
 disableSubmitButton();
-validateParticipantPassword();
-    disableSubmitButton();
-    validateParticipantPassword();
   </script>
 </body>
 </html>
