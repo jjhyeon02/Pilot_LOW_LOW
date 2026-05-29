@@ -17,13 +17,8 @@
       background: #fff;
     }
 
-    .page {
-      display: none;
-    }
-
-    .page.active {
-      display: block;
-    }
+    .page { display: none; }
+    .page.active { display: block; }
 
     .title-box {
       border: 2px solid #222;
@@ -44,67 +39,13 @@
       margin-bottom: 18px;
     }
 
-    ul {
-      font-size: 17px;
-      margin-top: 12px;
-      margin-bottom: 32px;
-    }
-
-    li {
-      margin-bottom: 14px;
-    }
-
-    .center {
-      text-align: center;
-    }
+    .center { text-align: center; }
 
     .logo-img {
       display: block;
       width: 130px;
       max-width: 40%;
       margin: 60px auto 20px auto;
-    }
-
-    .consent-box,
-    .input-box {
-      margin-top: 36px;
-      padding: 22px;
-      border: 1px solid #ccc;
-      border-radius: 10px;
-      background: #fafafa;
-    }
-
-    .consent-label {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      font-size: 17px;
-      cursor: pointer;
-    }
-
-    .consent-label input {
-      width: 20px;
-      height: 20px;
-      margin-top: 4px;
-    }
-
-    label {
-      display: block;
-      font-size: 17px;
-      margin-top: 18px;
-      margin-bottom: 8px;
-      font-weight: bold;
-    }
-
-    input[type="text"] {
-      width: 100%;
-      box-sizing: border-box;
-      font-size: 18px;
-      padding: 12px;
-      border: 1px solid #aaa;
-      border-radius: 8px;
-      text-align: center;
-      letter-spacing: 4px;
     }
 
     .video-box {
@@ -207,23 +148,10 @@
       font-size: 14px;
       color: #777;
     }
-
-    .warning {
-      color: #b00020;
-      font-size: 15px;
-      margin-top: 10px;
-    }
-
-    .researcher {
-      text-align: center;
-      margin-top: 50px;
-      font-size: 16px;
-    }
   </style>
 </head>
 
 <body>
-
 
   <!-- 1페이지: 연구 안내 -->
   <section class="page active" id="page1">
@@ -247,63 +175,17 @@
       <strong>전재현(jjhyeon02@gmail.com)</strong>에게 문의하실 수 있습니다.
     </p>
 
-    <!-- ESP 로고 이미지: esp-logo.png 파일을 같은 폴더에 넣으세요 -->
     <img class="logo-img" src="esp-logo.png" alt="ESP 로고">
 
     <p class="center">- Explorers of Social Psychology -</p>
 
     <div class="button-row">
-      <button type="button" id="toPage2">다음</button>
+      <button type="button" id="toVideoPage">다음</button>
     </div>
   </section>
 
-  <!-- 2페이지: 연구 참가 동의서 -->
-  <section class="page" id="page2">
-    <h2>&lt;연구 참가 동의서&gt;</h2>
-
-    <p>
-      본인은 본인이 참가하는 연구의 목적 및 조사 내용에 대한 설명을 제공받았으며,
-      아래 연구 참가자의 권리 및 의무에 대하여 이해하였습니다.
-      또한 본인은 연구 참가자의 권리에 대한 의문 해소를 위한 담당자 및 연구윤리관리자의 연락처 정보를 제공받았습니다.
-      이에 본인은 이후에 진행되는 연구 절차에 성실히 임할 것을 동의하는 바입니다.
-    </p>
-
-    <p><strong>권리사항</strong></p>
-    <ul>
-      <li>연구 참가자는 참가 거부 및 연구에 참가한 후 언제라도 철회할 수 있는 권리가 있다.</li>
-      <li>연구 참가자는 참가자의 거부나 철회로 인해 불이익을 받지 않는다.</li>
-      <li>연구 참가자가 제공한 자료는 철저히 비밀을 보장한다.</li>
-    </ul>
-
-    <p><strong>의무사항</strong></p>
-    <ul>
-      <li>연구 참가자는 연구에 참여하기로 결정한 후 철회하거나 연구가 종료될 때까지 성실하게 연구에 참여한다.</li>
-      <li>연구 참가자는 본인이 참가한 연구의 목적과 절차를 타인에게 공개하지 않는다.</li>
-    </ul>
-
-    <p class="researcher">
-      연구자: ESP (김선화, 김재희, 이병훈, 전재현)
-    </p>
-
-    <div class="consent-box">
-      <label class="consent-label">
-        <input type="checkbox" id="consentCheck">
-        <span>위 내용을 읽었으며, 연구 참여에 동의합니다.</span>
-      </label>
-    </div>
-
-    <p class="warning" id="consentWarning">
-      연구 참여에 동의해야 다음 단계로 이동할 수 있습니다.
-    </p>
-
-    <div class="button-row">
-      <button type="button" id="backToPage1">이전</button>
-      <button type="button" id="toPage4" disabled>다음</button>
-    </div>
-  </section>
-
-  <!-- 3페이지: 영상 시청 -->
-  <section class="page" id="page4">
+  <!-- 영상 시청 페이지 -->
+  <section class="page" id="pageVideo">
     <h2>다음 영상을 시청해 주십시오</h2>
 
     <p class="center">
@@ -330,7 +212,7 @@
     </div>
 
     <p class="notice" id="notice">
-      테스트용: 현재는 영상을 끝까지 보지 않아도 다음 설문으로 이동할 수 있습니다.
+      영상을 끝까지 시청하면 다음 버튼이 활성화됩니다.
     </p>
 
     <p class="small-notice">
@@ -339,24 +221,12 @@
   </section>
 
   <script>
-    /*
-      중요:
-      아래 주소를 실제 Google Form 응답자용 링크로 바꾸세요.
-      예: https://forms.gle/xxxxxxxxxxxx
-    */
-    const googleFormUrl = "https://tally.so/r/LZk1ll";
-
-    /*
-      테스트용 설정입니다.
-      true  = 영상이 끝나지 않아도 다음 설문으로 이동 가능
-      false = 영상이 끝까지 재생되어야 다음 설문으로 이동 가능
-    */
+    const googleFormUrl = "https://tally.so/r/xXvxqk";
     const testMode = false;
 
     const pages = {
       page1: document.getElementById("page1"),
-      page2: document.getElementById("page2"),
-      page4: document.getElementById("page4")
+      pageVideo: document.getElementById("pageVideo")
     };
 
     function showPage(pageId) {
@@ -365,35 +235,11 @@
       window.scrollTo(0, 0);
     }
 
-    document.getElementById("toPage2").addEventListener("click", () => {
-      showPage("page2");
-    });
+    document.getElementById("toVideoPage").addEventListener("click", () => {
+      showPage("pageVideo");
 
-    document.getElementById("backToPage1").addEventListener("click", () => {
-      showPage("page1");
-    });
-
-    const consentCheck = document.getElementById("consentCheck");
-    const toPage4 = document.getElementById("toPage4");
-    const consentWarning = document.getElementById("consentWarning");
-
-    consentCheck.addEventListener("change", () => {
-      if (consentCheck.checked) {
-        toPage4.disabled = false;
-        consentWarning.style.display = "none";
-      } else {
-        toPage4.disabled = true;
-        consentWarning.style.display = "block";
-      }
-    });
-
-    toPage4.addEventListener("click", () => {
-      if (consentCheck.checked) {
-        showPage("page4");
-
-        if (testMode) {
-          enableSubmitButton();
-        }
+      if (testMode) {
+        enableSubmitButton();
       }
     });
 
@@ -489,7 +335,8 @@
       window.location.href = googleFormUrl;
     });
 
-disableSubmitButton();
+    disableSubmitButton();
   </script>
+
 </body>
 </html>
